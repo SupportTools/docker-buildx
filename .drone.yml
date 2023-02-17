@@ -13,11 +13,28 @@ clone:
 steps:
 
   - name: Docker Build
-    image: cube8021/docker-buildx:20.10.14-0.8.2
-    environment:
-      DOCKER_USERNAME:
+    image: plugins/docker
+    settings:
+      username:
         from_secret: docker_username
-      DOCKER_PASSWORD:
+      password:
         from_secret: docker_password
-    commands:
-    - sh ./docker-build.sh
+      repo: cube8021/docker-buildx
+      tags: latest
+      dockerfile: Dockerfile
+      context: .
+      pull: true
+      dry_run: false
+      daemon_off: true
+      no_cache: false
+      squash: false
+      purge: false
+      insecure: false
+      auto_tag: false
+      auto_tag_suffix: latest
+      registry: https://index.docker.io/v1/
+      secrets:
+        - source: docker_username
+          target: username
+        - source: docker_password
+          target: password
