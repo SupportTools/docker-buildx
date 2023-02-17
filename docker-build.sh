@@ -9,7 +9,7 @@ GIT_COMMIT=$(git rev-list -1 HEAD)
 echo "Setting up buildx..."
 docker buildx version
 docker run --rm --privileged multiarch/qemu-user-static --reset -p yes
-docker buildx create --use
+docker buildx create
 
 echo "Building..."
 docker buildx build \
