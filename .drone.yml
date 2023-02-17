@@ -33,8 +33,3 @@ steps:
       auto_tag: false
       auto_tag_suffix: latest
       registry: https://index.docker.io/v1/
-      secrets:
-        - source: docker_username
-          target: username
-        - source: docker_password
-          target: password
