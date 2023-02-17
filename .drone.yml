@@ -1,0 +1,23 @@
+---
+kind: pipeline
+type: vm
+name: docker-buildx
+
+platform:
+  os: linux
+  arch: amd64
+
+clone:
+  depth: 1
+
+steps:
+
+  - name: Docker Build
+    image: cube8021/docker-buildx:20.10.14-0.8.2
+    environment:
+      DOCKER_USERNAME:
+        from_secret: docker_username
+      DOCKER_PASSWORD:
+        from_secret: docker_password
+    commands:
+    - sh ./docker-build.sh
