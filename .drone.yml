@@ -15,14 +15,14 @@ steps:
   - name: Docker Build
     image: plugins/docker
     settings:
-      username:
-        from_secret: docker_username
-      password:
-        from_secret: docker_password
       repo: cube8021/docker-buildx
       tags:
       - latest
       - ${DRONE_BUILD_NUMBER}
+      username:
+        from_secret: docker-username
+      password:
+        from_secret: docker-password
       dockerfile: Dockerfile
       context: .
       pull: true
