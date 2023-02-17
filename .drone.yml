@@ -20,7 +20,9 @@ steps:
       password:
         from_secret: docker_password
       repo: cube8021/docker-buildx
-      tags: latest
+      tags:
+      - latest
+      - ${DRONE_BUILD_NUMBER}
       dockerfile: Dockerfile
       context: .
       pull: true
